@@ -1,27 +1,37 @@
 h1 {
-	font-size: 50px;
+	font-size: 40px;
 	text-align: center;
+	margin-top:80px;
+	margin-bottom: 80px;
 }
+
+span {
+	font-size: 80px;
+}
+
 .iphone-wrapper {
 	width: 400px;
-	height: 700px;
-	background-color: #4C4E53;
-	color: #D3D6D6;
-
+	height: 650px;
+	border: 1px solid black;
+	color: #d2d6d6;
 }
-.nav-icons {
+
+.navigate {
 	display: flex;
 	justify-content: space-between;
+	margin: 15px;
 }
-.nav-icons i {
-	padding: 20px;
-	font-size: 20px;
+
+
+.button-row-round {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 15 55 0 55;
 }
+
 .button-row {
 	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
-section {
-	padding: 50px 0;
+	justify-content: center;
+	margin-top: 100px;
 }

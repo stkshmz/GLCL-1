@@ -36,3 +36,5 @@ gulp.task('sass', function(){
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(gulp.dest(cssDest))
 });
+
+//to understand how this works, watch Class 3 vid 52:00, "to create a single component with some modification"

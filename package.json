@@ -1,0 +1,29 @@
+{
+  "name": "glcl-1",
+  "version": "1.0.0",
+  "description": "package.json for golden light component library",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheshirefirewire/GLCL-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cheshirefirewire/GLCL-1/issues"
+  },
+  "homepage": "https://github.com/cheshirefirewire/GLCL-1#readme",
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-concat": "latest",
+    "gulp-rename": "latest",
+    "gulp-uglify": "latest",
+    "gulp-sass": "latest",
+    "gulp-concat-css": "latest",
+    "gulp-clean-css": "latest",
+    "gulp-babel": "latest"
+  }
+}
