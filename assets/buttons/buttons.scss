@@ -1,12 +1,13 @@
-body {
-	background-color: #4C4E53;
-	color: #fff;
-	font-family: Arial;
+//@import 'variables';
+.library {
+    background-color: #4C4E53;
+    color: #fff;
+    font-family: Arial;
 }
 
 .row {
-	display: flex;
-	margin: 20px;
+    display: flex;
+    margin: 20px;
 }
 
 .button {
@@ -28,14 +29,17 @@ body {
                 color: 8B8054;
             }
         }
-	}
+        &.unfilled {
+            border: 4px solid #EBCE60;
+        }
+    }
 
     &.filled {
-    	background-color: #EBCE60;
+        background-color: #EBCE60;
 
-    	p{
-    		color: #4b4f53;
-    	}
+        p{
+            color: #4b4f53;
+        }
     }
 
     &.unfilled {
@@ -44,27 +48,27 @@ body {
     }
 
     &.hover {
-    	background-color: #EED77B;
+        background-color: #EED77B;
 
-    	p {
-    		color: #616675;
-    	}
+        p {
+            color: #616675;
+        }
     }
 
     &.click {
-    	background-color: #BCA54C;
+        background-color: #BCA54C;
 
-    	p {
-    		color: #4b4f53;
-    	}
+        p {
+            color: #4b4f53;
+        }
     }
 
     &.inactive {
-    	background-color: #E0E3E8;
+        background-color: #E0E3E8;
 
-    	p {
-    		color: #BEC0C9;
-    	}
+        p {
+            color: #BEC0C9;
+        }
     }
 
     p {
@@ -72,20 +76,26 @@ body {
         margin: auto;
         text-align: center;
         color: #EBCE60;
-        font-size: 30px;
+        font-size: 31px;
+        line-height: 1em;
+        font-weight: bold;
     }
 
     &.long {
-    	width: 220px;
-    	height: 30px;
-    	border-radius: 20px;
+        width: 220px;
+        height: 30px;
+        border-radius: 20px;
         display: table;
 
         p {
-        	display: table;
-        	font-size: 12px;
-        	margin: auto;
-        	padding-top: 8px;
+            display: table;
+            font-size: 12px;
+            margin: auto;
+            padding-top: 8px;
+
+            &.check {
+                font-size: 20px;
+            }
         }
 
         &.hover2 {
@@ -93,7 +103,7 @@ body {
             background-color: #8B8054;
 
             p {
-            	color: #EBCE60;
+                color: #EBCE60;
             }
         }
     }

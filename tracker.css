@@ -1,0 +1,27 @@
+h1 {
+	font-size: 50px;
+	text-align: center;
+}
+.iphone-wrapper {
+	width: 400px;
+	height: 700px;
+	background-color: #4C4E53;
+	color: #D3D6D6;
+
+}
+.nav-icons {
+	display: flex;
+	justify-content: space-between;
+}
+.nav-icons i {
+	padding: 20px;
+	font-size: 20px;
+}
+.button-row {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+section {
+	padding: 50px 0;
+}

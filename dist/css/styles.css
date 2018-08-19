@@ -1,4 +1,11 @@
-body {
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+* {
+  font-family: 'Nunito', sans-serif;
+}
+li {
+  text-decoration: none;
+}
+.library {
   background-color: #4C4E53;
   color: #fff;
   font-family: Arial;
@@ -30,6 +37,10 @@ body {
 
 .button.round.disabled p {
   color: 8B8054;
+}
+
+.button.round.unfilled {
+  border: 4px solid #EBCE60;
 }
 
 .button.filled {
@@ -74,7 +85,9 @@ body {
   margin: auto;
   text-align: center;
   color: #EBCE60;
-  font-size: 30px;
+  font-size: 31px;
+  line-height: 1em;
+  font-weight: bold;
 }
 
 .button.long {
@@ -91,6 +104,10 @@ body {
   padding-top: 8px;
 }
 
+.button.long p.check {
+  font-size: 20px;
+}
+
 .button.long.hover2 {
   border: 2px solid #EBCE60;
   background-color: #8B8054;
@@ -98,7 +115,4 @@ body {
 
 .button.long.hover2 p {
   color: #EBCE60;
-}
-li {
-  text-decoration: none;
 }
