@@ -1,3 +1,5 @@
+@import '../main';
+
 .button{
   background-color: blue;
   height:40px;
@@ -15,7 +17,7 @@
       
      
       &.disabled{
-        border: 3px solid #F4CC61;
+        border: 3px solid $secondary;
       opacity: 0.5; 
         p {
             opacity: 50%;
@@ -32,7 +34,7 @@
         margin: auto;
         text-align: center;
       line-height: 32px;
-        color: #F4CC61;
+        color: $secondary;
         font-size: 40px;
     }
 
@@ -42,7 +44,7 @@
     height: 45px;
     width: 300px;
     border-radius: 50px;
-    border: 3px solid #F4CC61;
+    border: 3px solid $secondary;
     margin-bottom: 20px; 
 
     p {
@@ -65,7 +67,7 @@
       padding: 15px;
 
       &.gold-check {
-        color: #F4CC61;
+        color: $secondary;
       }
     }
 
@@ -80,7 +82,7 @@
     }
 
     &.normal {
-      background-color: #F4CC61;
+      background-color: $secondary;
 
     }
 
@@ -95,7 +97,7 @@
     &.hoverLight {
       background-color: #8D7E53;
         p {
-          color: #F4CC61;
+          color: $secondary;
         }
     }
 
@@ -106,7 +108,7 @@
 
     &.dark {
       p {
-        color: #F4CC61;
+        color: $secondary;
       }
     }
       }
