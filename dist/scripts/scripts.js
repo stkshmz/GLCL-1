@@ -1,27 +1,5 @@
 'use strict';
 
-var fn = function fn() {
-	// adding p tag for minus
-	var minus = document.getElementsByClassName('minus');
-
-	for (var i = 0; i < minus.length; i++) {
-		var e = document.createElement('p');
-		e.innerHTML = '-';
-		minus[i].appendChild(e);
-	}
-
-	//adding p tag for plus
-	var plus = document.getElementsByClassName('plus');
-	for (var i = 0; i < plus.length; i++) {
-		var e = document.createElement('p');
-		e.innerHTML = '+';
-		plus[i].appendChild(e);
-	}
-};
-
-document.addEventListener('DOMContentLoaded', fn, false);
-'use strict';
-
 var calendar = function calendar() {
 
   var firstDay = function firstDay(year, month) {
@@ -76,35 +54,88 @@ var calendar = function calendar() {
 document.addEventListener('DOMContentLoaded', calendar, false);
 'use strict';
 
-var calendarHeader = function calendarHeader() {
-  var month = document.getElementById('month');
-  var monthSetter = function monthSetter(newMonth) {
-    month.innerHTML = newMonth;
-  };
-  monthSetter('September');
-  var monthArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  console.log(monthArr[0]);
-  var leftArrow = document.getElementById('left-arrow');
-  var rightArrow = document.getElementById('right-arrow');
-  var monthIndex = 8;
-  leftArrow.addEventListener('click', function () {
-    if (monthIndex > 0) {
-      monthIndex--;
-      monthSetter(monthArr[monthIndex]);
-    }
-  });
-  rightArrow.addEventListener('click', function () {
-    if (monthIndex < monthArr.length - 1) {
-      monthIndex++;
-      monthSetter(monthArr[monthIndex]);
-    }
-  });
+var fn = function fn() {
+	// adding p tag for minus
+	var minus = document.getElementsByClassName('minus');
+
+	for (var i = 0; i < minus.length; i++) {
+		var e = document.createElement('p');
+		e.innerHTML = '-';
+		minus[i].appendChild(e);
+	}
+
+	//adding p tag for plus
+	var plus = document.getElementsByClassName('plus');
+	for (var i = 0; i < plus.length; i++) {
+		var e = document.createElement('p');
+		e.innerHTML = '+';
+		plus[i].appendChild(e);
+	}
 };
 
-document.addEventListener('DOMContentLoaded', calendarHeader, false);
+document.addEventListener('DOMContentLoaded', fn, false);
 'use strict';
 
 var list = [];
 var myFunkyFunk = function myFunkyFunk() {
   console.log('the funk');
 };
+'use strict';
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var titleCarouselWrapper = function titleCarouselWrapper() {
+  var titleCarousel = document.getElementById('title-carousel');
+
+  var elementBuilder = function elementBuilder(elementType, elementId, appendTo, classes) {
+    var el = document.createElement('elementType');
+    if (classes) {
+      var _el$classList;
+
+      (_el$classList = el.classList).add.apply(_el$classList, _toConsumableArray(classes));
+    };
+    el.id = elementId;
+    appendTo.appendChild(el);
+  };
+
+  elementBuilder('p', 'left-arrow', titleCarousel, ['arrow', 'fas', 'fa-chevron-left']);
+  elementBuilder('p', 'title', titleCarousel);
+  elementBuilder('p', 'right-arrow', titleCarousel, ['arrow', 'fas', 'fa-chevron-right']);
+
+  // let la = document.createElement('p');
+  // la.classList.add('arrow', 'fas', 'fa-chevron-left');
+  // la.id = 'left-arrow';
+  // titleCarousel.appendChild(la);
+
+  // let ra = document.createElement('p');
+  // ra.classList.add('arrow', 'fas', 'fa-chevron-right');
+  // ra.id = 'right-arrow';
+  // titleCarousel.appendChild(ra);
+
+  var title = document.getElementById('title');
+  var titleSetter = function titleSetter(newTitle) {
+    title.innerHTML = newTitle;
+  };
+  titleSetter('September');
+
+  var monthArr = JSON.parse(titleCarousel.getAttribute('title-arr'));
+  for (var i = 0; i < monthArr.length; i++) {}
+
+  var leftArrow = document.getElementById('left-arrow');
+  var rightArrow = document.getElementById('right-arrow');
+  var titleIndex = 8;
+  leftArrow.addEventListener('click', function () {
+    if (titleIndex > 0) {
+      titleIndex--;
+      titleSetter(monthArr[titleIndex]);
+    }
+  });
+  rightArrow.addEventListener('click', function () {
+    if (titleIndex < monthArr.length - 1) {
+      titleIndex++;
+      titleSetter(monthArr[titleIndex]);
+    }
+  });
+};
+
+document.addEventListener('DOMContentLoaded', titleCarouselWrapper, false);
