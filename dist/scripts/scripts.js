@@ -1,5 +1,27 @@
 'use strict';
 
+var fn = function fn() {
+	// adding p tag for minus
+	var minus = document.getElementsByClassName('minus');
+
+	for (var i = 0; i < minus.length; i++) {
+		var e = document.createElement('p');
+		e.innerHTML = '-';
+		minus[i].appendChild(e);
+	}
+
+	//adding p tag for plus
+	var plus = document.getElementsByClassName('plus');
+	for (var i = 0; i < plus.length; i++) {
+		var e = document.createElement('p');
+		e.innerHTML = '+';
+		plus[i].appendChild(e);
+	}
+};
+
+document.addEventListener('DOMContentLoaded', fn, false);
+'use strict';
+
 var calendar = function calendar() {
 
   var firstDay = function firstDay(year, month) {
@@ -14,9 +36,40 @@ var calendar = function calendar() {
   //https://stackoverflow.com/a/6002265/5885911
   //Use const rather than let or var, we use const when a variable doesn't get reassigned or updated overtime.
   //Since these are functions, we don't expect the functions to change so we can make them constants.
+  var currentTime = new Date();
 
+  // returns the month (from 0 to 11)
+  var currentMonth = currentTime.getMonth() + 1;
+
+  // returns the day of the month (from 1 to 31)
+  var currentDay = currentTime.getDate();
+
+  // returns the year (four digits)
+  var currentYear = currentTime.getFullYear();
 
   //TODO: Create the lastMonth function which takes the arguments, "year", "month", "dayOfWeek"
+
+  var lastMonth = function lastMonth(year, month, dayOfWeek) {
+    var previousMonth = month - 1;
+    var daysInPreviousMonth = function daysInPreviousMonth(y, p) {
+      var previousMonthArr = [];
+      var ld = lastDay(y, p);
+      var i = 0;
+
+      while (i < daysOfTheWeek.length) {
+        previousMonthArr.push(ld);
+        ld--;
+        i++;
+      }
+      return previousMonthArr;
+    };
+    if (previousMonth < 1) {
+      previousMonth = 12;
+      return daysInPreviousMonth(year - 1, previousMonth);
+    } else {
+      return daysInPreviousMonth(year, previousMonth);
+    }
+  };
   //Create the previousMonth variable which is equal to month-1
   //Create the daysInPreviousMonth function which takes two arguments, "y", "p".
   // Y represents current year, p represents previousMonth
@@ -56,6 +109,7 @@ var calendar = function calendar() {
   var populateCalendarBody = function populateCalendarBody() {
     var currentDaysInMonth = lastDay(2018, 9);
     var firstDayOfMonth = firstDay(2018, 9);
+    var lastMonthArr = lastMonth(currentYear, currentMonth, firstDayOfMonth);
     //TODO: Create lastMonthArr const which is equal to the lastMonth function which
     // takes the arguments currentYear, currentMonth, and firstDayOfMonth
     var daysInRow = 7;
@@ -64,13 +118,19 @@ var calendar = function calendar() {
     var currentDayOfMonthIndex = 1; //current day of current month (e.g. september)
     var currentCalendarDayIndex = 0; //current index of days on calendar (i.e. daysInRow * totalRows)
     //TODO: Create lmaIndex variable which is equal to the firstDayOfMonth-1
-
+    var lastDaysIndex = 1;
+    var lmaIndex = firstDayOfMonth - 1;
     while (currentRows < totalRows) {
       var calendarRow = document.createElement('div');
       for (var i = 0; i < daysInRow; i++) {
         var day = document.createElement('p');
         //TODO: Create a new if condition which says
         //"If the currentCalendarDayIndex is less than the firstDayOfMonth"
+        if (currentCalendarDayIndex < firstDayOfMonth) {
+          day.innerHTML = lastMonthArr[lmaIndex];
+          day.classList.add('grayedout');
+          lmaIndex--;
+        }
         //Within the if condition
         //set day inner html to the current lmaIndex of the lastMonthArr
         //add the 'grayedOut' class to the classList of the "day" variable
@@ -78,13 +138,17 @@ var calendar = function calendar() {
 
         //This if condition says "start adding days to the calendar, if the
         //first weekday of the current month has been reached"
-        if (currentCalendarDayIndex >= firstDayOfMonth && currentDayOfMonthIndex <= currentDaysInMonth) {
-          day.innerHTML = currentDayOfMonthIndex;
-          currentDayOfMonthIndex++;
-        }
+        else if (currentCalendarDayIndex >= firstDayOfMonth && currentDayOfMonthIndex <= currentDaysInMonth) {
+            day.innerHTML = currentDayOfMonthIndex;
+            currentDayOfMonthIndex++;
+          }
 
-        //TODO: BONUS: You can add another if condition here if you want, which will just say "add grayed numbers to the end of the month until we run out of space on the calendar"
-
+          //TODO: BONUS: You can add another if condition here if you want, which will just say "add grayed numbers to the end of the month until we run out of space on the calendar"
+          else {
+              day.innerHTML = lastDaysIndex;
+              day.classList.add('grayedout');
+              lastDaysIndex++;
+            }
 
         currentCalendarDayIndex++;
         calendarRow.appendChild(day);
@@ -97,28 +161,6 @@ var calendar = function calendar() {
 };
 
 document.addEventListener('DOMContentLoaded', calendar, false);
-'use strict';
-
-var fn = function fn() {
-	// adding p tag for minus
-	var minus = document.getElementsByClassName('minus');
-
-	for (var i = 0; i < minus.length; i++) {
-		var e = document.createElement('p');
-		e.innerHTML = '-';
-		minus[i].appendChild(e);
-	}
-
-	//adding p tag for plus
-	var plus = document.getElementsByClassName('plus');
-	for (var i = 0; i < plus.length; i++) {
-		var e = document.createElement('p');
-		e.innerHTML = '+';
-		plus[i].appendChild(e);
-	}
-};
-
-document.addEventListener('DOMContentLoaded', fn, false);
 'use strict';
 
 var list = [];
