@@ -1,8 +1,8 @@
 let dashboard = () => {
-  let calendarContainer = document.getElementById('body');
-  calendarContainer.addEventListener('arrowClick', function(event) {
-    console.log('arrow clicked!', event);
-  });
+  const dashBody = document.getElementById('body');
+  dashBody.addEventListener('arrowClick', function(){
+    console.log('arrow clicked!');
+  }, true);
 };
 
 document.addEventListener('DOMContentLoaded', dashboard, false);

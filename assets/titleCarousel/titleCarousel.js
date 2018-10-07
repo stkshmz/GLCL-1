@@ -40,6 +40,9 @@ let titleCarouselWrapper = () => {
     }
     leftArrow.dispatchEvent(arrowClick('left'));
   });
+  leftArrow.addEventListener('arrowClick', function(event){
+    console.log('suspicious', event);
+  });
 
   rightArrow.addEventListener('click', ()=>{
     if(titleIndex < titleArr.length-1){

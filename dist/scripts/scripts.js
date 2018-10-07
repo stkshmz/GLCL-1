@@ -24,16 +24,16 @@ document.addEventListener('DOMContentLoaded', fn, false);
 
 var calendar = function calendar() {
 
+  // Returns the first weekday of a month as an integer, e.g. 6 = Saturday
   var firstDay = function firstDay(year, month) {
     return new Date(year, month - 1, 1).getDay();
   };
 
+  // Returns an integer representing the total number of days in a month
   var lastDay = function lastDay(year, month) {
     return new Date(year, month, 0).getDate();
   };
 
-  //TODO: Create currentTime, currentDay, currentMonth, currentYear variables based on this stack overflow answer
-  //https://stackoverflow.com/a/6002265/5885911
   // Return today's date and time
   var currentTime = new Date();
 
@@ -46,11 +46,6 @@ var calendar = function calendar() {
   // returns the year (four digits)
   var currentYear = currentTime.getFullYear();
 
-  //Use const rather than let or var, we use const when a variable doesn't get reassigned or updated overtime.
-  //Since these are functions, we don't expect the functions to change so we can make them constants.
-
-
-  //TODO: Create the lastMonth function which takes the arguments, "year", "month", "dayOfWeek"
   var lastMonth = function lastMonth(year, month, dayOfWeek) {
     var previousMonth = month - 1;
     var daysInPreviousMonth = function daysInPreviousMonth(y, p) {
@@ -84,11 +79,12 @@ var calendar = function calendar() {
   };
   populateCalendarHead();
 
+  // let titleIndex = Number(titleCarousel.getAttribute('title-starting-index'));
+
   var calendarBody = document.getElementById('calendar-body');
   var populateCalendarBody = function populateCalendarBody() {
     var currentDaysInMonth = lastDay(2018, 9);
     var firstDayOfMonth = firstDay(2018, 9);
-    //TODO: Create lastMonthArr const which is equal to the lastMonth function which
     var lastMonthArr = lastMonth(currentYear, currentMonth, firstDayOfMonth);
     var daysInRow = 7;
     var totalRows = 6;
@@ -96,14 +92,12 @@ var calendar = function calendar() {
     var currentDayOfMonthIndex = 1; //current day of current month (e.g. september)
     var currentCalendarDayIndex = 0; //current index of days on calendar (i.e. daysInRow * totalRows)
     var lastDaysIndex = 1;
-    //TODO: Create lmaIndex variable which is equal to the firstDayOfMonth-1
     var lmaIndex = firstDayOfMonth - 1;
 
     while (currentRows < totalRows) {
       var calendarRow = document.createElement('div');
       for (var i = 0; i < daysInRow; i++) {
         var day = document.createElement('p');
-
         if (currentCalendarDayIndex < firstDayOfMonth) {
           day.innerHTML = lastMonthArr[lmaIndex];
           day.classList.add('grayedOut');
@@ -116,7 +110,6 @@ var calendar = function calendar() {
           day.classList.add('grayedOut');
           lastDaysIndex++;
         }
-
         currentCalendarDayIndex++;
         calendarRow.appendChild(day);
       }
@@ -126,9 +119,10 @@ var calendar = function calendar() {
   };
   populateCalendarBody();
   var calendar = document.getElementById('calendar');
+  // console.log(calendar);
   calendar.addEventListener('arrowClick', function () {
-    console.log('arrow clicked!');
-  });
+    console.log('arrow clicked calllllll!');
+  }, true);
 };
 
 document.addEventListener('DOMContentLoaded', calendar, false);
@@ -185,6 +179,9 @@ var titleCarouselWrapper = function titleCarouselWrapper() {
       titleSetter(titleArr[titleIndex]);
     }
     leftArrow.dispatchEvent(arrowClick('left'));
+  });
+  leftArrow.addEventListener('arrowClick', function (event) {
+    console.log('suspicious', event);
   });
 
   rightArrow.addEventListener('click', function () {
