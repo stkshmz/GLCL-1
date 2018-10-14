@@ -1,8 +1,17 @@
 let dashboard = () => {
-  const dashBody = document.getElementById('body');
-  dashBody.addEventListener('arrowClick', function(){
-    console.log('arrow clicked!');
-  }, true);
-};
+	const dashBody = document.getElementById('body');
+	const calendar = document.getElementById('calendar');
 
-document.addEventListener('DOMContentLoaded', dashboard, false);
+	const monthChange = (direction) => {
+		return new CustomEvent('monthChange', {
+		  bubbles: false,
+		  detail: { changeDirection: direction }
+		});
+	}
+	dashBody.addEventListener('arrowClick', function(event){
+		calendar.dispatchEvent(monthChange(event.detail.arrowDirection));
+
+		}, true);
+	};
+
+	document.addEventListener('DOMContentLoaded', dashboard, false);

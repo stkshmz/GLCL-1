@@ -82,10 +82,10 @@ var calendar = function calendar() {
   // let titleIndex = Number(titleCarousel.getAttribute('title-starting-index'));
 
   var calendarBody = document.getElementById('calendar-body');
-  var populateCalendarBody = function populateCalendarBody() {
-    var currentDaysInMonth = lastDay(2018, 9);
-    var firstDayOfMonth = firstDay(2018, 9);
-    var lastMonthArr = lastMonth(currentYear, currentMonth, firstDayOfMonth);
+  var populateCalendarBody = function populateCalendarBody(selectedYear, selectedMonth) {
+    var currentDaysInMonth = lastDay(selectedYear, selectedMonth);
+    var firstDayOfMonth = firstDay(selectedYear, selectedMonth);
+    var lastMonthArr = lastMonth(selectedYear, selectedMonth, firstDayOfMonth);
     var daysInRow = 7;
     var totalRows = 6;
     var currentRows = 0;
@@ -117,8 +117,29 @@ var calendar = function calendar() {
       currentRows++;
     }
   };
-  populateCalendarBody();
+  populateCalendarBody(currentYear, currentMonth);
   var calendar = document.getElementById('calendar');
+  var currentMonthIndex = currentMonth.valueOf();
+  var currentYearIndex = currentYear.valueOf();
+  calendar.addEventListener('monthChange', function (event) {
+    console.log('event', event);
+    // change the current month and the current year
+    var changeDirection = event.detail.changeDirection;
+    if (changeDirection === 'left') {
+      console.log('left');
+      currentMonthIndex = currentMonthIndex - 1;
+      populateCalendarBody(currentYearIndex, currentMonthIndex);
+    } else if (changeDirection === 'right') {
+      console.log('right');
+      currentMonthIndex = currentMonthIndex + 1;
+      populateCalendarBody(currentYearIndex, currentMonthIndex);
+    }
+    // if(changeDirection === 'left')
+    //  go back one month
+    // if(changeDirection === 'right') 
+    // go forward one month
+  }, true);
+
   // console.log(calendar);
   calendar.addEventListener('arrowClick', function () {
     console.log('arrow clicked calllllll!');
